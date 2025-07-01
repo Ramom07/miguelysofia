@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel & Sofía - Nuestra Boda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --primary: #6a5b8c; /* Lila oscuro */
+            --accent: #b19cd9; /* Lila medio */
+            --light: #ffffff; /* Blanco */
+            --dark: #4a4a4a; /* Gris oscuro */
+            --gold: #d4c1ec; /* Lila claro */
+            --light-gold: #f0e8ff; /* Lila muy claro */
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background-color: var(--light);
+        }
+        
+        /* Image Background */
+        .image-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            background-image: url('assents/imagenes/sofm.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.8);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(177, 156, 217, 0.3), rgba(106, 91, 140, 0.5));
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Audio Prompt */
+        .audio-prompt {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+        
+        .audio-prompt.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .prompt-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        .prompt-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .prompt-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .prompt-button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .prompt-button:hover {
+            background-color: #9c87c7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Header */
+        .header {
+            padding: 30px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+        
+        .save-the-date {
+            font-size: 5.5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-family: 'Playfair Display', serif;
+            opacity: 0;
+            animation: fadeInDown 1s ease-out 0.5s forwards;
+            background: rgba(106, 91, 140, 0.5);
+            padding: 20px 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .name-container {
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 1s forwards;
+            background: rgba(106, 91, 140, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            max-width: 80%;
+        }
+        
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 500;
+            color: white;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            margin: 10px 0;
+        }
+        
+        .ampersand {
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--gold);
+            margin: 1.5rem 0;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .wedding-date {
+            font-size: 2.2rem;
+            color: white;
+            margin: 2.5rem 0;
+            font-weight: 400;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 1.5s forwards;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            background: rgba(106, 91, 140, 0.5);
+            padding: 15px 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            display: inline-block;
+        }
+        
+        .date-highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .hero-text {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 1.8s forwards;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            background: rgba(106, 91, 140, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 2s forwards, bounce 2s infinite 3s;
+            background: rgba(106, 91, 140, 0.5);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* Audio Controls */
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .audio-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .audio-btn:hover {
+            background: rgba(177, 156, 217, 0.3);
+        }
+        
+        .song-title {
+            color: white;
+            font-size: 0.9rem;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Photo Gallery - Carrusel */
+        .gallery-section {
+            padding: 100px 0;
+            background-color: var(--light);
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            font-weight: 500;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        /* Carrusel con tamaño dinámico */
+        .swiper-container {
+            width: 100%;
+            max-height: 80vh;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(106, 91, 140, 0.15);
+            margin: 0 auto;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-color: #f0f0f0; /* Color de fondo temporal */
+        }
+        
+        .swiper-slide-content {
+            max-width: 100%;
+            max-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .swiper-slide img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(106, 91, 140, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+            background: rgba(106, 91, 140, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: rgba(106, 91, 140, 0.7);
+        }
+        
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 1.5rem;
+        }
+        
+        .swiper-pagination-bullet {
+            background: var(--light);
+            width: 12px;
+            height: 12px;
+            opacity: 0.7;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--accent);
+            opacity: 1;
+        }
+        
+        .pause-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .pause-control:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .pause-control i {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Countdown Section */
+        .countdown-section {
+            padding: 100px 0;
+            background-color: var(--light-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .countdown-item {
+            background: white;
+            border-radius: 15px;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(106, 91, 140, 0.15);
+        }
+        
+        .countdown-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--accent);
+        }
+        
+        .countdown-number {
+            font-size: 3.8rem;
+            font-weight: 300;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        /* Details Section */
+        .details-section {
+            padding: 100px 0;
+            background-color: var(--light);
+            position: relative;
+        }
+        
+        .details-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .detail-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.08);
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(106, 91, 140, 0.12);
+        }
+        
+        .detail-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+        
+        .detail-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .detail-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .detail-content {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        /* Gift Registry Section */
+        .gift-section {
+            padding: 100px 0;
+            background-color: var(--light-gold);
+            position: relative;
+        }
+        
+        .gift-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .gift-intro {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .gift-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .gift-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .gift-option {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(106, 91, 140, 0.1);
+            transition: var(--transition);
+        }
+        
+        .gift-option:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.15);
+        }
+        
+        .gift-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .gift-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .gift-description {
+            font-size: 1rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .gift-link {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .gift-link:hover {
+            background-color: #9c87c7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* RSVP Section */
+        .rsvp-section {
+            padding: 100px 0;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .rsvp-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .rsvp-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .rsvp-text {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .rsvp-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .whatsapp-button {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 25px 0;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-button:hover {
+            transform: translateY(-5px);
+            background-color: #128C7E;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .whatsapp-button i {
+            margin-right: 10px;
+        }
+        
+        .rsvp-instruction {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .confirmation-date {
+            font-size: 1.3rem;
+            margin-top: 40px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        .note {
+            font-style: italic;
+            margin-top: 20px;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        
+        /* WhatsApp Options */
+        .whatsapp-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 700px;
+            margin: 40px auto 0;
+            gap: 40px;
+        }
+        
+        .whatsapp-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .whatsapp-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .whatsapp-option {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            width: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .whatsapp-option:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .whatsapp-number {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        /* Confirmation Timer */
+        .confirmation-timer {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 60px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .timer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+        }
+        
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .timer-item {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timer-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .timer-number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .timer-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--primary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-text {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-top: 40px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+            40% {transform: translateY(-20px) translateX(-50%);}
+            60% {transform: translateY(-10px) translateX(-50%);}
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .save-the-date {
+                font-size: 4.5rem;
+            }
+            
+            .name {
+                font-size: 3rem;
+            }
+            
+            .ampersand {
+                font-size: 2.5rem;
+            }
+            
+            .wedding-date {
+                font-size: 1.8rem;
+            }
+            
+            .swiper-container {
+                max-height: 60vh;
+            }
+            
+            .countdown-item {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .countdown-number {
+                font-size: 3.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 600px;
+            }
+            
+            .save-the-date {
+                font-size: 3.5rem;
+                letter-spacing: 5px;
+                padding: 15px 30px;
+            }
+            
+            .name-container {
+                padding: 20px;
+            }
+            
+            .name {
+                font-size: 2.5rem;
+            }
+            
+            .ampersand {
+                font-size: 2rem;
+                margin: 1rem 0;
+            }
+            
+            .wedding-date {
+                font-size: 1.6rem;
+                padding: 10px 20px;
+            }
+            
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .swiper-container {
+                max-height: 50vh;
+            }
+            
+            .countdown-item {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .countdown-number {
+                font-size: 2.8rem;
+            }
+            
+            .detail-card {
+                min-width: 100%;
+                padding: 30px;
+                margin: 10px 0;
+            }
+            
+            .gift-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .whatsapp-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .whatsapp-column {
+                width: 100%;
+            }
+            
+            .whatsapp-title {
+                font-size: 1.6rem;
+            }
+            
+            .timer-item {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .timer-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .save-the-date {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+                padding: 10px 20px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .ampersand {
+                font-size: 1.5rem;
+            }
+            
+            .wedding-date {
+                font-size: 1.4rem;
+                padding: 8px 16px;
+            }
+            
+            .hero-text {
+                font-size: 1.1rem;
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .swiper-container {
+                max-height: 40vh;
+            }
+            
+            .countdown-container {
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .countdown-number {
+                font-size: 2.3rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.9rem;
+            }
+            
+            .audio-controls {
+                padding: 8px 12px;
+            }
+            
+            .song-title {
+                font-size: 0.8rem;
+                max-width: 100px;
+            }
+            
+            .whatsapp-photo {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .timer-item {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .timer-number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio Prompt -->
+    <div class="audio-prompt">
+        <div class="prompt-content">
+            <h2 class="prompt-title">Bienvenidos</h2>
+            <p class="prompt-text">Para disfrutar de la experiencia completa, por favor activa la música de fondo.</p>
+            <button class="prompt-button" id="enable-audio">
+                Activar Música
+            </button>
+        </div>
+    </div>
+    
+    <!-- Image Background -->
+    <div class="image-background"></div>
+    <div class="overlay"></div>
+    
+    <!-- Audio -->
+    <audio id="wedding-song">
+        <source src="assents/musica/steady-hand.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    
+    <!-- Controles de audio -->
+    <div class="audio-controls">
+        <button id="play-btn" class="audio-btn">
+            <i class="fas fa-play"></i>
+        </button>
+        <button id="pause-btn" class="audio-btn">
+            <i class="fas fa-pause"></i>
+        </button>
+        <div class="song-title">Sofia y Miguel - Canción de la boda</div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-title">Miguel & Sofía</div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="save-the-date">NUESTRA BODA</h1>
+        
+        <div class="name-container">
+            <div class="name">Miguel Lee</div>
+            <div class="ampersand">&</div>
+            <div class="name">Sofía Contreras</div>
+        </div>
+        
+        <div class="wedding-date">26 de <span class="date-highlight">Julio</span> 2025</div>
+        <p class="hero-text">Con gran alegría les anunciamos nuestra boda. Esperamos compartir este día tan especial con todos ustedes.</p>
+        
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Photo Gallery - Carrusel -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Momentos</h2>
+            <div class="swiper-container">
+                <div class="swiper gallerySwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Cada slide ahora tiene un contenedor interno para controlar el tamaño -->
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03416.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03350.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03282.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03347.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03386.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03405.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03388.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03406.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03370.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03470.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03423.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03455.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03473.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03490.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03486.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03495.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03500-2.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03500.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03506-2.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03504.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03513.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03518.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03519.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03536.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03530.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03558.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03550.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03568.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03615.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03601.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03675.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03671.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03581.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03597.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03644.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03623.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03702.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03699.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03689.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03735.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03750.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03781.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03741.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03758.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03825.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03835-2.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03787.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03892.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03855.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03864.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03835.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03965.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03949.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03954.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03925.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03921.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04033.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03991.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04000.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03985.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC03969.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04127.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04107.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04112.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04124.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04100.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04073.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04114.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04165.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04145.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04180.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04137.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04178.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04135.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04168.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04173.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="swiper-slide-content">
+                                <img src="assents/imagenes/DSC04159.jpg" alt="Miguel y Sofía">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                    <div class="pause-control">
+                        <i class="fas fa-pause" id="carousel-pause"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-instructions">
+                <p style="text-align: center; margin-top: 20px; font-style: italic; color: var(--primary);">
+                    <i class="fas fa-info-circle"></i> El carrusel cambia automáticamente cada 2 segundos. 
+                    Haz clic en el botón <i class="fas fa-pause"></i> para pausar una imagen que te guste.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="container">
+            <h2 class="section-title">Cuenta Regresiva</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Días</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Horas</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutos</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Segundos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Details Section -->
+    <section class="details-section">
+        <div class="container">
+            <h2 class="section-title">Detalles de la Boda</h2>
+            <div class="details-container">
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3 class="detail-title">Ceremonia</h3>
+                    <p class="detail-content"><span class="highlight">4:00 PM</span></p>
+                    <p class="detail-content">Capilla de Santa María</p>
+                    <p class="detail-content">Av. Paseo de la Reforma 123, Ciudad de México</p>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3 class="detail-title">Recepción</h3>
+                    <p class="detail-content"><span class="highlight">7:00 PM</span></p>
+                    <p class="detail-content">Hacienda de los Sueños</p>
+                    <p class="detail-content">Bosque de Chapultepec, Ciudad de México</p>
+                </div>
+                
+                <div class="detail-card">
+                    <div class="detail-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3 class="detail-title">Hospedaje</h3>
+                    <p class="detail-content">Hotel Boutique Las Flores</p>
+                    <p class="detail-content">Descuento especial para invitados</p>
+                    <p class="detail-content">Reservas: (55) 1234-5678</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gift Registry Section -->
+    <section class="gift-section">
+        <div class="container">
+            <h2 class="section-title">Lista de Regalos</h2>
+            <div class="gift-container">
+                <p class="gift-intro">Su presencia en nuestro día especial es el mejor regalo que podríamos recibir. Sin embargo, si desean hacernos un obsequio, aquí tienen algunas opciones que apreciaríamos enormemente:</p>
+                
+                <div class="gift-box">
+                    <div class="gift-options">
+                        <div class="gift-option">
+                            <div class="gift-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h3 class="gift-title">Amazon</h3>
+                            <p class="gift-description">Regalos para nuestro nuevo hogar seleccionados en nuestra lista de bodas</p>
+                            <a href="#" class="gift-link">Ver Lista</a>
+                        </div>
+                        
+                        <div class="gift-option">
+                            <div class="gift-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h3 class="gift-title">Liverpool</h3>
+                            <p class="gift-description">Regalos tradicionales para nuestra nueva vida juntos</p>
+                            <a href="#" class="gift-link">Ver Lista</a>
+                        </div>
+                        
+                        <div class="gift-option">
+                            <div class="gift-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <h3 class="gift-title">Fondo para Luna de Miel</h3>
+                            <p class="gift-description">Contribución para nuestro viaje de ensueño a Italia</p>
+                            <a href="#" class="gift-link">Contribuir</a>
+                        </div>
+                    </div>
+                    
+                    <p class="note" style="margin-top: 30px;">
+                        * Agradecemos de corazón cualquier detalle. Su amor y apoyo son lo más importante para nosotros.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+        <div class="container">
+            <div class="rsvp-container">
+                <h2 class="rsvp-title">Confirmación</h2>
+                <p class="rsvp-text">Por favor confirma tu asistencia antes del <span style="font-weight:600">5 de Julio de 2025</span></p>
+                
+                <div class="rsvp-box">
+                    <div class="rsvp-instruction">
+                        <p>Para confirmar tu asistencia, puedes enviar un mensaje de WhatsApp directamente al novio o a la novia:</p>
+                        <p>Por favor incluye en tu mensaje:</p>
+                        <p>1. Tu nombre completo</p>
+                        <p>2. Nombres de tus acompañantes (si aplica)</p>
+                        <p>Ejemplo: "Miguel González asistirá con 1 acompañante"</p>
+                    </div>
+                    
+                    <!-- WhatsApp Options Container -->
+                    <div class="whatsapp-container">
+                        <!-- Miguel Column -->
+                        <div class="whatsapp-column">
+                            <h3 class="whatsapp-title">Contactar al Novio</h3>
+                            <div class="whatsapp-option">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&w=400" alt="Miguel Lee" class="whatsapp-photo">
+                                <div class="whatsapp-name">Miguel Lee</div>
+                                <div class="whatsapp-number">55 2299 4697</div>
+                                <a href="https://wa.me/525522994697" class="whatsapp-button" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Enviar WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Sofía Column -->
+                        <div class="whatsapp-column">
+                            <h3 class="whatsapp-title">Contactar a la Novia</h3>
+                            <div class="whatsapp-option">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&w=400" alt="Sofía Contreras" class="whatsapp-photo">
+                                <div class="whatsapp-name">Sofía Contreras</div>
+                                <div class="whatsapp-number">56 1426 0610</div>
+                                <a href="https://wa.me/525614260610" class="whatsapp-button" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> Enviar WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Confirmation Timer -->
+                    <div class="confirmation-timer">
+                        <h3 class="timer-title">Tiempo restante para confirmar</h3>
+                        <div class="timer-container">
+                            <div class="timer-item">
+                                <div class="timer-number" id="conf-days">00</div>
+                                <div class="timer-label">Días</div>
+                            </div>
+                            <div class="timer-item">
+                                <div class="timer-number" id="conf-hours">00</div>
+                                <div class="timer-label">Horas</div>
+                            </div>
+                            <div class="timer-item">
+                                <div class="timer-number" id="conf-minutes">00</div>
+                                <div class="timer-label">Minutos</div>
+                            </div>
+                            <div class="timer-item">
+                                <div class="timer-number" id="conf-seconds">00</div>
+                                <div class="timer-label">Segundos</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="note">* Por favor, ten en cuenta que debido a restricciones de espacio, solo podemos recibir a los invitados que hayan sido explícitamente invitados. Agradecemos tu comprensión.</p>
+                    
+                    <p class="confirmation-date">Fecha límite: 5 de Julio 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-names">Miguel & Sofía</div>
+            <p class="footer-text">Gracias por ser parte de nuestra historia. Esperamos celebrar juntos el comienzo de nuestra vida como esposos.</p>
+            <p class="copyright">© 2025 - Boda de Miguel Lee y Sofía Contreras</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper Gallery with autoplay
+        const swiper = new Swiper('.gallerySwiper', {
+            loop: true,
+            autoplay: {
+                delay: 2000, // Cambia cada 2 segundos
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+        });
+        
+        // Pause/Play functionality for carousel
+        const carouselPauseBtn = document.getElementById('carousel-pause');
+        let isPaused = false;
+        
+        carouselPauseBtn.addEventListener('click', function() {
+            if (isPaused) {
+                swiper.autoplay.start();
+                carouselPauseBtn.classList.remove('fa-play');
+                carouselPauseBtn.classList.add('fa-pause');
+                isPaused = false;
+            } else {
+                swiper.autoplay.stop();
+                carouselPauseBtn.classList.remove('fa-pause');
+                carouselPauseBtn.classList.add('fa-play');
+                isPaused = true;
+            }
+        });
+        
+        // Countdown Timer for Wedding
+        function updateWeddingCountdown() {
+            const weddingDate = new Date('July 26, 2025 16:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                return;
+            }
+            
+            // Calculate time units
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Update elements
+            document.getElementById('days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+        
+        // Countdown Timer for Confirmation Deadline
+        function updateConfirmationCountdown() {
+            const confirmationDate = new Date('July 5, 2025 23:59:59').getTime();
+            const now = new Date().getTime();
+            const distance = confirmationDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('conf-days').innerText = '00';
+                document.getElementById('conf-hours').innerText = '00';
+                document.getElementById('conf-minutes').innerText = '00';
+                document.getElementById('conf-seconds').innerText = '00';
+                return;
+            }
+            
+            // Calculate time units
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Update elements
+            document.getElementById('conf-days').innerText = days.toString().padStart(2, '0');
+            document.getElementById('conf-hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('conf-minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('conf-seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+        
+        // Initial call and update every second
+        updateWeddingCountdown();
+        updateConfirmationCountdown();
+        setInterval(updateWeddingCountdown, 1000);
+        setInterval(updateConfirmationCountdown, 1000);
+        
+        // Audio controls
+        const song = document.getElementById('wedding-song');
+        const playBtn = document.getElementById('play-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const enableAudioBtn = document.getElementById('enable-audio');
+        const audioPrompt = document.querySelector('.audio-prompt');
+        
+        // Set volume to 30%
+        song.volume = 0.3;
+        
+        // Play button functionality
+        playBtn.addEventListener('click', function() {
+            song.play();
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'block';
+        });
+        
+        // Pause button functionality
+        pauseBtn.addEventListener('click', function() {
+            song.pause();
+            pauseBtn.style.display = 'none';
+            playBtn.style.display = 'block';
+        });
+        
+        // Enable audio button
+        enableAudioBtn.addEventListener('click', function() {
+            song.play()
+                .then(() => {
+                    audioPrompt.classList.add('hidden');
+                    playBtn.style.display = 'none';
+                    pauseBtn.style.display = 'block';
+                })
+                .catch(error => {
+                    console.log("Error al reproducir audio:", error);
+                    alert("Por favor haz clic en cualquier parte de la página para activar el audio");
+                });
+        });
+        
+        // Initially hide the pause button
+        pauseBtn.style.display = 'none';
+        
+        // Play on user interaction to satisfy autoplay policies
+        document.body.addEventListener('click', function() {
+            if (song.paused) {
+                song.play()
+                    .then(() => {
+                        audioPrompt.classList.add('hidden');
+                        playBtn.style.display = 'none';
+                        pauseBtn.style.display = 'block';
+                    })
+                    .catch(error => {
+                        console.log("Autoplay prevented:", error);
+                    });
+            }
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Animate sections on scroll
+        document.querySelectorAll('.gallery-section, .countdown-section, .details-section, .gift-section, .rsvp-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+        
+        // Scroll down button
+        document.querySelector('.scroll-down').addEventListener('click', function() {
+            window.scrollTo({
+                top: document.querySelector('.gallery-section').offsetTop,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

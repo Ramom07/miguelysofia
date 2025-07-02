@@ -12,12 +12,13 @@
     <style>
         :root {
             --gold: #D4AF37; /* Dorado principal */
-            --lilac: #C8A2C8; /* Lila principal */
-            --light-lilac: #e6d4e6; /* Lila claro */
+            --lilac: #9a7b9a; /* Lila principal actualizado */
+            --light-lilac: #f0e6f0; /* Lila claro actualizado */
             --white: #ffffff; /* Blanco */
             --dark: #4a4a4a; /* Gris oscuro */
             --gold-transparent: rgba(212, 175, 55, 0.5); /* Dorado transparente */
-            --lilac-transparent: rgba(200, 162, 200, 0.3); /* Lila transparente */
+            --lilac-transparent: rgba(154, 123, 154, 0.3); /* Lila transparente actualizado */
+            --rsvp-bg: #f5f0f5; /* Nuevo color de fondo para RSVP */
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
@@ -35,7 +36,7 @@
             background-color: var(--white);
         }
         
-        /* Image Background */
+        /* Image Background - Solución para móviles */
         .image-background {
             position: fixed;
             top: 0;
@@ -44,9 +45,9 @@
             height: 100%;
             z-index: -2;
             overflow: hidden;
-            background-image: url('sofm.jpg');
+            background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1200&w=800');
             background-size: cover;
-            background-position: center;
+            background-position: center 30%; /* Posición mejorada */
             background-repeat: no-repeat;
             filter: brightness(0.8);
         }
@@ -151,7 +152,7 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
-        /* Hero Section - Sin recuadros de fondo */
+        /* Hero Section - Solución para móviles */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -655,11 +656,11 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        /* RSVP Section */
+        /* RSVP Section - Cambios solicitados: Menos dorado */
         .rsvp-section {
             padding: 70px 0;
-            background-color: var(--gold);
-            color: var(--white);
+            background-color: var(--rsvp-bg); /* Nuevo color de fondo */
+            color: var(--dark); /* Texto oscuro */
             text-align: center;
         }
         
@@ -672,7 +673,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             margin-bottom: 25px;
-            color: var(--white);
+            color: var(--lilac); /* Color lila en lugar de blanco */
         }
         
         .rsvp-text {
@@ -683,16 +684,17 @@
             margin-left: auto;
             margin-right: auto;
             padding: 0 15px;
+            color: var(--dark); /* Texto oscuro */
         }
         
         .rsvp-box {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.8); /* Fondo más claro */
             border-radius: 12px;
             padding: 30px;
             max-width: 600px;
             margin: 0 auto;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(154, 123, 154, 0.2); /* Borde lila suave */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombra más suave */
         }
         
         .whatsapp-button {
@@ -706,13 +708,13 @@
             font-weight: 600;
             margin: 20px 0;
             transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra más suave */
         }
         
         .whatsapp-button:hover {
             transform: translateY(-5px);
             background-color: #128C7E;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
         .whatsapp-button i {
@@ -722,16 +724,17 @@
         .rsvp-instruction {
             font-size: 1rem;
             margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(154, 123, 154, 0.1); /* Fondo más suave */
             padding: 15px;
             border-radius: 8px;
-            border-left: 3px solid var(--lilac);
+            border-left: 3px solid var(--lilac); /* Borde lila */
+            color: var(--dark); /* Texto oscuro */
         }
         
         .confirmation-date {
             font-size: 1.2rem;
             margin-top: 30px;
-            color: var(--lilac);
+            color: var(--lilac); /* Color lila */
             font-weight: 500;
         }
         
@@ -740,6 +743,7 @@
             margin-top: 15px;
             opacity: 0.8;
             font-size: 0.9rem;
+            color: var(--dark); /* Texto oscuro */
         }
         
         /* WhatsApp Options */
@@ -764,26 +768,26 @@
         .whatsapp-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
-            color: var(--lilac);
+            color: var(--lilac); /* Color lila */
             margin-bottom: 20px;
             text-align: center;
             width: 100%;
         }
         
         .whatsapp-option {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.8); /* Fondo más claro */
             border-radius: 12px;
             padding: 20px;
             text-align: center;
             width: 100%;
             transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(154, 123, 154, 0.2); /* Borde lila suave */
         }
         
         .whatsapp-option:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 1); /* Fondo sólido al pasar el ratón */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
         .whatsapp-photo {
@@ -792,37 +796,37 @@
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 15px;
-            border: 3px solid var(--lilac);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 3px solid var(--lilac); /* Borde lila */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .whatsapp-name {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             margin-bottom: 12px;
-            color: var(--white);
+            color: var(--dark); /* Texto oscuro */
         }
         
         .whatsapp-number {
             font-size: 1rem;
             margin-bottom: 15px;
-            color: var(--lilac);
+            color: var(--lilac); /* Color lila */
         }
         
         /* Confirmation Timer */
         .confirmation-timer {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(154, 123, 154, 0.1); /* Fondo más suave */
             border-radius: 12px;
             padding: 25px;
             margin-top: 50px;
-            border-left: 3px solid var(--lilac);
+            border-left: 3px solid var(--lilac); /* Borde lila */
         }
         
         .timer-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             margin-bottom: 20px;
-            color: var(--lilac);
+            color: var(--lilac); /* Color lila */
         }
         
         .timer-container {
@@ -835,7 +839,7 @@
         }
         
         .timer-item {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.8); /* Fondo más claro */
             border-radius: 8px;
             width: 80px;
             height: 80px;
@@ -843,9 +847,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(154, 123, 154, 0.2); /* Borde lila suave */
         }
         
         .timer-item::before {
@@ -855,13 +860,13 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background-color: var(--gold);
+            background-color: var(--lilac); /* Color lila */
         }
         
         .timer-number {
             font-size: 2rem;
             font-weight: 300;
-            color: var(--white);
+            color: var(--dark); /* Texto oscuro */
             font-family: 'Playfair Display', serif;
             line-height: 1;
             margin-bottom: 5px;
@@ -871,14 +876,14 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--lilac);
+            color: var(--lilac); /* Color lila */
             font-weight: 500;
         }
         
         /* Footer */
         .footer {
-            background-color: var(--gold);
-            color: rgba(255, 255, 255, 0.7);
+            background-color: var(--lilac); /* Color lila */
+            color: rgba(255, 255, 255, 0.85);
             padding: 50px 0 25px;
             text-align: center;
         }
@@ -902,7 +907,7 @@
         
         .copyright {
             font-size: 0.85rem;
-            opacity: 0.6;
+            opacity: 0.8;
             margin-top: 30px;
         }
         
@@ -940,63 +945,43 @@
             60% {transform: translateY(-8px) translateX(-50%);}
         }
         
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .save-the-date {
-                font-size: 4rem;
-            }
-            
-            .name {
-                font-size: 3rem;
-            }
-            
-            .ampersand {
-                font-size: 2.5rem;
-            }
-            
-            .wedding-date {
-                font-size: 1.8rem;
-            }
-            
-            .swiper-slide {
-                min-height: 400px;
-            }
-            
-            .countdown-item {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .countdown-number {
-                font-size: 3.2rem;
-            }
-        }
-        
+        /* Responsive Design - Solución para móviles */
         @media (max-width: 768px) {
+            .image-background {
+                background-position: center 25%; /* Posición mejorada para móviles */
+            }
+            
             .hero {
                 min-height: 550px;
             }
             
             .save-the-date {
-                font-size: 3rem;
+                font-size: 2.5rem;
                 letter-spacing: 4px;
+                margin-bottom: 1rem;
             }
             
             .name {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .ampersand {
-                font-size: 1.8rem;
-                margin: 0.8rem 0;
+                font-size: 1.6rem;
+                margin: 0.5rem 0;
             }
             
             .wedding-date {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+                margin: 1.5rem 0;
+            }
+            
+            .hero-text {
+                font-size: 1rem;
+                max-width: 90%;
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .swiper-slide {
@@ -1049,32 +1034,32 @@
         
         @media (max-width: 576px) {
             .save-the-date {
-                font-size: 2.2rem;
+                font-size: 2rem;
                 letter-spacing: 3px;
             }
             
             .name {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .ampersand {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
             
             .wedding-date {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             
             .hero-text {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             
             .swiper-slide {
-                min-height: 300px;
+                min-height: 250px;
             }
             
             .countdown-container {
@@ -1159,7 +1144,7 @@
         </div>
     </header>
     
-    <!-- Hero Section - Sin recuadros -->
+    <!-- Hero Section - Solución para móviles -->
     <section class="hero">
         <h1 class="save-the-date">NUESTRA BODA</h1>
         
@@ -1177,10 +1162,10 @@
         </div>
     </section>
     
-    <!-- Photo Gallery - Carrusel adaptado -->
+    <!-- Photo Gallery - Carrusel adaptado con todas tus imágenes -->
     <section class="gallery-section">
         <div class="container">
-            <h2 class="section-title"></h2>
+            <h2 class="section-title">Nuestros Momentos</h2>
             <div class="swiper-container">
                 <div class="swiper gallerySwiper">
                     <div class="swiper-wrapper">
@@ -1696,7 +1681,7 @@
         </div>
     </section>
     
-    <!-- RSVP Section -->
+    <!-- RSVP Section - Cambios solicitados: Menos dorado -->
     <section class="rsvp-section">
         <div class="container">
             <div class="rsvp-container">

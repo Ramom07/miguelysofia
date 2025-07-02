@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         :root {
-            --primary: #6a5b8c; /* Lila oscuro */
-            --accent: #b19cd9; /* Lila medio */
-            --light: #ffffff; /* Blanco */
+            --gold: #D4AF37; /* Dorado principal */
+            --lilac: #C8A2C8; /* Lila principal */
+            --light-lilac: #e6d4e6; /* Lila claro */
+            --white: #ffffff; /* Blanco */
             --dark: #4a4a4a; /* Gris oscuro */
-            --gold: #d4c1ec; /* Lila claro */
-            --light-gold: #f0e8ff; /* Lila muy claro */
+            --gold-transparent: rgba(212, 175, 55, 0.5); /* Dorado transparente */
+            --lilac-transparent: rgba(200, 162, 200, 0.3); /* Lila transparente */
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
@@ -31,7 +32,7 @@
             color: var(--dark);
             line-height: 1.7;
             overflow-x: hidden;
-            background-color: var(--light);
+            background-color: var(--white);
         }
         
         /* Image Background */
@@ -56,14 +57,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(177, 156, 217, 0.3), rgba(106, 91, 140, 0.5));
+            background: linear-gradient(45deg, var(--lilac-transparent), rgba(106, 91, 140, 0.5));
             z-index: -1;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 15px; /* Menor padding en móviles */
         }
         
         /* Audio Prompt */
@@ -88,33 +89,34 @@
         }
         
         .prompt-content {
-            background: white;
+            background: var(--white);
             border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
+            padding: 30px;
+            max-width: 90%; /* Más ancho en móviles */
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin: 0 15px;
         }
         
         .prompt-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+            font-size: 1.8rem; /* Tamaño más pequeño en móviles */
+            color: var(--gold);
+            margin-bottom: 15px;
         }
         
         .prompt-text {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 1rem;
+            margin-bottom: 20px;
             line-height: 1.6;
         }
         
         .prompt-button {
-            background-color: var(--accent);
-            color: white;
+            background-color: var(--gold);
+            color: var(--white);
             border: none;
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 12px 30px;
+            font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
@@ -122,14 +124,14 @@
         }
         
         .prompt-button:hover {
-            background-color: #9c87c7;
+            background-color: #b08c2d;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         /* Header */
         .header {
-            padding: 30px 0;
+            padding: 20px 0; /* Menor padding en móviles */
             text-align: center;
             position: sticky;
             top: 0;
@@ -141,10 +143,10 @@
         
         .header-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem; /* Tamaño más pequeño en móviles */
             font-weight: 600;
-            color: white;
-            letter-spacing: 3px;
+            color: var(--white);
+            letter-spacing: 2px;
             text-transform: uppercase;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
@@ -152,7 +154,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            min-height: 700px;
+            min-height: 600px; /* Menor altura en móviles */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -160,104 +162,110 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            padding: 0 20px;
+            padding: 0 15px; /* Menor padding en móviles */
         }
         
         .save-the-date {
-            font-size: 5.5rem;
+            font-size: 3rem; /* Tamaño más pequeño en móviles */
             font-weight: 700;
-            color: white;
-            letter-spacing: 8px;
+            color: var(--white);
+            letter-spacing: 5px;
             text-transform: uppercase;
-            margin-bottom: 2rem;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
             font-family: 'Playfair Display', serif;
             opacity: 0;
             animation: fadeInDown 1s ease-out 0.5s forwards;
-            background: rgba(106, 91, 140, 0.5);
-            padding: 20px 40px;
-            border-radius: 10px;
+            background: var(--gold-transparent);
+            padding: 15px 25px;
+            border-radius: 8px;
             backdrop-filter: blur(5px);
+            width: 90%; /* Más ancho en móviles */
+            max-width: 700px;
         }
         
         .name-container {
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             opacity: 0;
             animation: fadeIn 1.5s ease-out 1s forwards;
-            background: rgba(106, 91, 140, 0.5);
-            padding: 30px;
-            border-radius: 15px;
+            background: var(--gold-transparent);
+            padding: 20px;
+            border-radius: 12px;
             backdrop-filter: blur(5px);
-            max-width: 80%;
+            width: 90%; /* Más ancho en móviles */
+            max-width: 700px;
         }
         
         .name {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 2.5rem; /* Tamaño más pequeño en móviles */
             font-weight: 500;
-            color: white;
+            color: var(--white);
             line-height: 1.3;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            margin: 10px 0;
+            margin: 8px 0;
         }
         
         .ampersand {
-            font-size: 3rem;
+            font-size: 2rem; /* Tamaño más pequeño en móviles */
             font-weight: 300;
             color: var(--gold);
-            margin: 1.5rem 0;
+            margin: 1rem 0;
             font-family: 'Playfair Display', serif;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
         .wedding-date {
-            font-size: 2.2rem;
-            color: white;
-            margin: 2.5rem 0;
+            font-size: 1.8rem; /* Tamaño más pequeño en móviles */
+            color: var(--white);
+            margin: 2rem 0;
             font-weight: 400;
             letter-spacing: 2px;
             opacity: 0;
             animation: fadeIn 1.5s ease-out 1.5s forwards;
             text-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            background: rgba(106, 91, 140, 0.5);
-            padding: 15px 30px;
-            border-radius: 10px;
+            background: var(--gold-transparent);
+            padding: 12px 25px;
+            border-radius: 8px;
             backdrop-filter: blur(5px);
             display: inline-block;
+            width: 90%; /* Más ancho en móviles */
+            max-width: 500px;
         }
         
         .date-highlight {
-            color: var(--gold);
+            color: var(--lilac);
             font-weight: 600;
         }
         
         .hero-text {
-            font-size: 1.3rem;
+            font-size: 1.1rem; /* Tamaño más pequeño en móviles */
             max-width: 700px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2.5rem;
             opacity: 0;
             animation: fadeIn 1.5s ease-out 1.8s forwards;
-            color: white;
+            color: var(--white);
             text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-            background: rgba(106, 91, 140, 0.5);
-            padding: 20px;
-            border-radius: 10px;
+            background: var(--gold-transparent);
+            padding: 15px;
+            border-radius: 8px;
             backdrop-filter: blur(5px);
+            width: 90%; /* Más ancho en móviles */
         }
         
         .scroll-down {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            color: white;
-            font-size: 2rem;
+            color: var(--white);
+            font-size: 1.8rem;
             animation: bounce 2s infinite;
             opacity: 0;
             animation: fadeIn 2s ease-out 2s forwards, bounce 2s infinite 3s;
-            background: rgba(106, 91, 140, 0.5);
-            width: 50px;
-            height: 50px;
+            background: var(--gold-transparent);
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -268,27 +276,28 @@
         /* Audio Controls */
         .audio-controls {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 15px;
+            left: 15px;
             z-index: 200;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 50px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 90%; /* Ancho máximo en móviles */
         }
         
         .audio-btn {
             background: transparent;
             border: none;
-            color: white;
-            font-size: 1.2rem;
+            color: var(--white);
+            font-size: 1.1rem;
             cursor: pointer;
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -301,9 +310,9 @@
         }
         
         .song-title {
-            color: white;
-            font-size: 0.9rem;
-            max-width: 150px;
+            color: var(--white);
+            font-size: 0.8rem;
+            max-width: 130px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -311,17 +320,17 @@
         
         /* Photo Gallery - Carrusel */
         .gallery-section {
-            padding: 100px 0;
-            background-color: var(--light);
+            padding: 70px 0; /* Menor padding en móviles */
+            background-color: var(--white);
             position: relative;
         }
         
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--primary);
+            font-size: 2.2rem; /* Tamaño más pequeño en móviles */
+            color: var(--gold);
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 50px;
             position: relative;
             font-weight: 500;
         }
@@ -329,21 +338,21 @@
         .section-title::after {
             content: "";
             position: absolute;
-            bottom: -20px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 3px;
-            background-color: var(--accent);
+            background-color: var(--lilac);
         }
         
         /* Carrusel con tamaño dinámico */
         .swiper-container {
             width: 100%;
-            max-height: 80vh;
-            border-radius: 20px;
+            max-height: 60vh; /* Menor altura en móviles */
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(106, 91, 140, 0.15);
+            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.15);
             margin: 0 auto;
         }
         
@@ -362,7 +371,7 @@
         
         .swiper-slide-content {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -370,64 +379,50 @@
         
         .swiper-slide img {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 100%;
             object-fit: contain;
             display: block;
             margin: 0 auto;
         }
         
-        .slide-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(106, 91, 140, 0.7);
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-        
         .swiper-button-next, .swiper-button-prev {
-            color: white;
-            background: rgba(106, 91, 140, 0.5);
-            width: 50px;
-            height: 50px;
+            color: var(--white);
+            background: var(--gold-transparent);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             backdrop-filter: blur(5px);
             transition: var(--transition);
         }
         
         .swiper-button-next:hover, .swiper-button-prev:hover {
-            background: rgba(106, 91, 140, 0.7);
+            background: rgba(212, 175, 55, 0.7);
         }
         
         .swiper-button-next::after, .swiper-button-prev::after {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         
         .swiper-pagination-bullet {
-            background: var(--light);
-            width: 12px;
-            height: 12px;
+            background: var(--white);
+            width: 10px;
+            height: 10px;
             opacity: 0.7;
         }
         
         .swiper-pagination-bullet-active {
-            background: var(--accent);
+            background: var(--lilac);
             opacity: 1;
         }
         
         .pause-control {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             z-index: 10;
             background: rgba(255, 255, 255, 0.3);
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -444,14 +439,23 @@
         }
         
         .pause-control i {
-            color: white;
-            font-size: 1.5rem;
+            color: var(--white);
+            font-size: 1.3rem;
+        }
+        
+        .carousel-instructions {
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--gold);
+            font-size: 0.9rem;
+            padding: 0 10px;
         }
         
         /* Countdown Section */
         .countdown-section {
-            padding: 100px 0;
-            background-color: var(--light-gold);
+            padding: 70px 0; /* Menor padding en móviles */
+            background-color: var(--light-lilac);
             position: relative;
             overflow: hidden;
         }
@@ -459,22 +463,22 @@
         .countdown-container {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 15px; /* Menor espacio en móviles */
             flex-wrap: wrap;
             max-width: 900px;
             margin: 0 auto;
         }
         
         .countdown-item {
-            background: white;
-            border-radius: 15px;
-            width: 160px;
-            height: 160px;
+            background: var(--white);
+            border-radius: 12px;
+            width: 130px; /* Tamaño más pequeño en móviles */
+            height: 130px; /* Tamaño más pequeño en móviles */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.1);
+            box-shadow: 0 10px 25px rgba(106, 91, 140, 0.1);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -482,8 +486,8 @@
         }
         
         .countdown-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(106, 91, 140, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(106, 91, 140, 0.15);
         }
         
         .countdown-item::before {
@@ -492,71 +496,71 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background-color: var(--accent);
+            height: 4px;
+            background-color: var(--gold);
         }
         
         .countdown-number {
-            font-size: 3.8rem;
+            font-size: 2.8rem; /* Tamaño más pequeño en móviles */
             font-weight: 300;
-            color: var(--primary);
+            color: var(--gold);
             font-family: 'Playfair Display', serif;
             line-height: 1;
             margin-bottom: 5px;
         }
         
         .countdown-label {
-            font-size: 1.1rem;
+            font-size: 1rem; /* Tamaño más pequeño en móviles */
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
+            letter-spacing: 1px;
+            color: var(--lilac);
             font-weight: 500;
         }
         
         /* Details Section */
         .details-section {
-            padding: 100px 0;
-            background-color: var(--light);
+            padding: 70px 0; /* Menor padding en móviles */
+            background-color: var(--white);
             position: relative;
         }
         
         .details-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 50px;
+            gap: 30px; /* Menor espacio en móviles */
             max-width: 1000px;
             margin: 0 auto;
         }
         
         .detail-card {
             flex: 1;
-            min-width: 300px;
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.08);
+            min-width: 280px; /* Tamaño más pequeño en móviles */
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(106, 91, 140, 0.08);
             transition: var(--transition);
             background: rgba(255, 255, 255, 0.9);
         }
         
         .detail-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(106, 91, 140, 0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.12);
         }
         
         .detail-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 25px;
+            font-size: 2.2rem; /* Tamaño más pequeño en móviles */
+            color: var(--gold);
+            margin-bottom: 20px;
         }
         
         .detail-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 15px;
+            font-size: 1.6rem; /* Tamaño más pequeño en móviles */
+            color: var(--gold);
+            margin-bottom: 12px;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
         }
         
         .detail-title::after {
@@ -564,27 +568,27 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
+            width: 50px;
             height: 2px;
-            background-color: var(--accent);
+            background-color: var(--lilac);
         }
         
         .detail-content {
-            font-size: 1.1rem;
+            font-size: 1rem; /* Tamaño más pequeño en móviles */
             color: var(--dark);
-            margin-bottom: 10px;
-            line-height: 1.8;
+            margin-bottom: 8px;
+            line-height: 1.7;
         }
         
         .highlight {
-            color: var(--accent);
+            color: var(--lilac);
             font-weight: 600;
         }
         
         /* Gift Registry Section */
         .gift-section {
-            padding: 100px 0;
-            background-color: var(--light-gold);
+            padding: 70px 0; /* Menor padding en móviles */
+            background-color: var(--light-lilac);
             position: relative;
         }
         
@@ -595,89 +599,90 @@
         }
         
         .gift-intro {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            line-height: 1.8;
+            font-size: 1.1rem; /* Tamaño más pequeño en móviles */
+            margin-bottom: 30px;
+            line-height: 1.7;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 15px;
         }
         
         .gift-box {
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.08);
-            margin-bottom: 30px;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(106, 91, 140, 0.08);
+            margin-bottom: 25px;
         }
         
         .gift-options {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 20px; /* Menor espacio en móviles */
+            margin-top: 25px;
         }
         
         .gift-option {
             flex: 1;
-            min-width: 200px;
-            max-width: 250px;
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 25px rgba(106, 91, 140, 0.1);
+            min-width: 180px; /* Tamaño más pequeño en móviles */
+            max-width: 220px;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(106, 91, 140, 0.1);
             transition: var(--transition);
         }
         
         .gift-option:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(106, 91, 140, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(106, 91, 140, 0.15);
         }
         
         .gift-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
+            font-size: 2.2rem; /* Tamaño más pequeño en móviles */
+            color: var(--gold);
+            margin-bottom: 15px;
         }
         
         .gift-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
+            font-size: 1.4rem; /* Tamaño más pequeño en móviles */
+            color: var(--gold);
+            margin-bottom: 12px;
         }
         
         .gift-description {
-            font-size: 1rem;
+            font-size: 0.95rem; /* Tamaño más pequeño en móviles */
             color: var(--dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.6;
         }
         
         .gift-link {
             display: inline-block;
-            background-color: var(--accent);
-            color: white;
+            background-color: var(--gold);
+            color: var(--white);
             text-decoration: none;
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             transition: var(--transition);
         }
         
         .gift-link:hover {
-            background-color: #9c87c7;
+            background-color: #b08c2d;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         /* RSVP Section */
         .rsvp-section {
-            padding: 100px 0;
-            background-color: var(--primary);
-            color: white;
+            padding: 70px 0; /* Menor padding en móviles */
+            background-color: var(--gold);
+            color: var(--white);
             text-align: center;
         }
         
@@ -688,24 +693,25 @@
         
         .rsvp-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 30px;
-            color: white;
+            font-size: 2.2rem; /* Tamaño más pequeño en móviles */
+            margin-bottom: 25px;
+            color: var(--white);
         }
         
         .rsvp-text {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            line-height: 1.8;
+            font-size: 1.1rem; /* Tamaño más pequeño en móviles */
+            margin-bottom: 30px;
+            line-height: 1.7;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 15px;
         }
         
         .rsvp-box {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 40px;
+            border-radius: 12px;
+            padding: 30px;
             max-width: 600px;
             margin: 0 auto;
             backdrop-filter: blur(10px);
@@ -715,13 +721,13 @@
         .whatsapp-button {
             display: inline-block;
             background-color: #25D366;
-            color: white;
+            color: var(--white);
             text-decoration: none;
-            padding: 15px 40px;
+            padding: 12px 30px;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin: 25px 0;
+            margin: 20px 0;
             transition: var(--transition);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
@@ -733,61 +739,64 @@
         }
         
         .whatsapp-button i {
-            margin-right: 10px;
+            margin-right: 8px;
         }
         
         .rsvp-instruction {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 1rem; /* Tamaño más pequeño en móviles */
+            margin-bottom: 25px;
             background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 4px solid var(--gold);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid var(--lilac);
         }
         
         .confirmation-date {
-            font-size: 1.3rem;
-            margin-top: 40px;
-            color: var(--gold);
+            font-size: 1.2rem; /* Tamaño más pequeño en móviles */
+            margin-top: 30px;
+            color: var(--lilac);
             font-weight: 500;
         }
         
         .note {
             font-style: italic;
-            margin-top: 20px;
+            margin-top: 15px;
             opacity: 0.8;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
         
         /* WhatsApp Options */
         .whatsapp-container {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap; /* Envolver en móviles */
+            justify-content: center;
             max-width: 700px;
-            margin: 40px auto 0;
-            gap: 40px;
+            margin: 30px auto 0;
+            gap: 30px; /* Menor espacio en móviles */
         }
         
         .whatsapp-column {
             flex: 1;
+            min-width: 280px; /* Ancho mínimo para móviles */
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 20px;
         }
         
         .whatsapp-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 25px;
+            font-size: 1.6rem; /* Tamaño más pequeño en móviles */
+            color: var(--lilac);
+            margin-bottom: 20px;
             text-align: center;
             width: 100%;
         }
         
         .whatsapp-option {
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 12px;
+            padding: 20px;
             text-align: center;
             width: 100%;
             transition: var(--transition);
@@ -797,52 +806,52 @@
         .whatsapp-option:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         .whatsapp-photo {
-            width: 150px;
-            height: 150px;
+            width: 120px; /* Tamaño más pequeño en móviles */
+            height: 120px; /* Tamaño más pequeño en móviles */
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 20px;
-            border: 4px solid var(--gold);
+            margin: 0 auto 15px;
+            border: 3px solid var(--lilac);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .whatsapp-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: white;
+            font-size: 1.6rem; /* Tamaño más pequeño en móviles */
+            margin-bottom: 12px;
+            color: var(--white);
         }
         
         .whatsapp-number {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-            color: var(--gold);
+            font-size: 1rem; /* Tamaño más pequeño en móviles */
+            margin-bottom: 15px;
+            color: var(--lilac);
         }
         
         /* Confirmation Timer */
         .confirmation-timer {
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 60px;
-            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 50px;
+            border-left: 3px solid var(--lilac);
         }
         
         .timer-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            color: var(--gold);
+            font-size: 1.6rem; /* Tamaño más pequeño en móviles */
+            margin-bottom: 20px;
+            color: var(--lilac);
         }
         
         .timer-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px; /* Menor espacio en móviles */
             flex-wrap: wrap;
             max-width: 600px;
             margin: 0 auto;
@@ -850,14 +859,14 @@
         
         .timer-item {
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            width: 100px;
-            height: 100px;
+            border-radius: 8px;
+            width: 80px; /* Tamaño más pequeño en móviles */
+            height: 80px; /* Tamaño más pequeño en móviles */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
         }
@@ -868,55 +877,56 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background-color: var(--accent);
+            height: 3px;
+            background-color: var(--gold);
         }
         
         .timer-number {
-            font-size: 2.5rem;
+            font-size: 2rem; /* Tamaño más pequeño en móviles */
             font-weight: 300;
-            color: white;
+            color: var(--white);
             font-family: 'Playfair Display', serif;
             line-height: 1;
             margin-bottom: 5px;
         }
         
         .timer-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem; /* Tamaño más pequeño en móviles */
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--gold);
+            color: var(--lilac);
             font-weight: 500;
         }
         
         /* Footer */
         .footer {
-            background-color: var(--primary);
+            background-color: var(--gold);
             color: rgba(255, 255, 255, 0.7);
-            padding: 60px 0 30px;
+            padding: 50px 0 25px;
             text-align: center;
         }
         
         .footer-names {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 30px;
+            font-size: 2rem; /* Tamaño más pequeño en móviles */
+            color: var(--white);
+            margin-bottom: 25px;
             letter-spacing: 1px;
         }
         
         .footer-text {
-            font-size: 1.1rem;
-            margin-bottom: 40px;
+            font-size: 1rem; /* Tamaño más pequeño en móviles */
+            margin-bottom: 30px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            padding: 0 15px;
         }
         
         .copyright {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.6;
-            margin-top: 40px;
+            margin-top: 30px;
         }
         
         /* Animations */
@@ -928,7 +938,7 @@
         @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(-50px);
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
@@ -939,7 +949,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -949,14 +959,14 @@
         
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-            40% {transform: translateY(-20px) translateX(-50%);}
-            60% {transform: translateY(-10px) translateX(-50%);}
+            40% {transform: translateY(-15px) translateX(-50%);}
+            60% {transform: translateY(-8px) translateX(-50%);}
         }
         
         /* Responsive Design */
         @media (max-width: 992px) {
             .save-the-date {
-                font-size: 4.5rem;
+                font-size: 4rem;
             }
             
             .name {
@@ -987,35 +997,35 @@
         
         @media (max-width: 768px) {
             .hero {
-                min-height: 600px;
+                min-height: 550px;
             }
             
             .save-the-date {
-                font-size: 3.5rem;
-                letter-spacing: 5px;
-                padding: 15px 30px;
+                font-size: 3rem;
+                letter-spacing: 4px;
+                padding: 12px 20px;
             }
             
             .name-container {
-                padding: 20px;
+                padding: 15px;
             }
             
             .name {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .ampersand {
-                font-size: 2rem;
-                margin: 1rem 0;
+                font-size: 1.8rem;
+                margin: 0.8rem 0;
             }
             
             .wedding-date {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
                 padding: 10px 20px;
             }
             
             .section-title {
-                font-size: 2.3rem;
+                font-size: 2rem;
             }
             
             .swiper-container {
@@ -1028,12 +1038,12 @@
             }
             
             .countdown-number {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             .detail-card {
                 min-width: 100%;
-                padding: 30px;
+                padding: 25px;
                 margin: 10px 0;
             }
             
@@ -1045,7 +1055,7 @@
             .whatsapp-container {
                 flex-direction: column;
                 align-items: center;
-                gap: 30px;
+                gap: 25px;
             }
             
             .whatsapp-column {
@@ -1053,81 +1063,7 @@
             }
             
             .whatsapp-title {
-                font-size: 1.6rem;
-            }
-            
-            .timer-item {
-                width: 80px;
-                height: 80px;
-            }
-            
-            .timer-number {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .save-the-date {
-                font-size: 2.5rem;
-                letter-spacing: 3px;
-                padding: 10px 20px;
-            }
-            
-            .name {
-                font-size: 2rem;
-            }
-            
-            .ampersand {
                 font-size: 1.5rem;
-            }
-            
-            .wedding-date {
-                font-size: 1.4rem;
-                padding: 8px 16px;
-            }
-            
-            .hero-text {
-                font-size: 1.1rem;
-                padding: 15px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .swiper-container {
-                max-height: 40vh;
-            }
-            
-            .countdown-container {
-                gap: 15px;
-            }
-            
-            .countdown-item {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .countdown-number {
-                font-size: 2.3rem;
-            }
-            
-            .countdown-label {
-                font-size: 0.9rem;
-            }
-            
-            .audio-controls {
-                padding: 8px 12px;
-            }
-            
-            .song-title {
-                font-size: 0.8rem;
-                max-width: 100px;
-            }
-            
-            .whatsapp-photo {
-                width: 120px;
-                height: 120px;
             }
             
             .timer-item {
@@ -1137,6 +1073,80 @@
             
             .timer-number {
                 font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .save-the-date {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+                padding: 10px 15px;
+            }
+            
+            .name {
+                font-size: 1.8rem;
+            }
+            
+            .ampersand {
+                font-size: 1.4rem;
+            }
+            
+            .wedding-date {
+                font-size: 1.3rem;
+                padding: 8px 15px;
+            }
+            
+            .hero-text {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .swiper-container {
+                max-height: 40vh;
+            }
+            
+            .countdown-container {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .countdown-number {
+                font-size: 2rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.85rem;
+            }
+            
+            .audio-controls {
+                padding: 6px 10px;
+            }
+            
+            .song-title {
+                font-size: 0.75rem;
+                max-width: 100px;
+            }
+            
+            .whatsapp-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .timer-item {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .timer-number {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -1257,341 +1267,6 @@
                                 <img src="imagenes/DSC03470.jpg" alt="Miguel y Sofía">
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03423.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03455.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03473.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03490.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03486.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03495.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03500-2.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03500.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03506-2.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03504.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03513.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03518.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03519.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03536.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03530.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03558.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03550.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03568.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03615.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03601.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03675.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03671.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03581.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03597.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03644.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03623.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03702.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03675.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03689.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03735.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03750.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03781.jpg" alt="Miguel y Sofía">
-                            </div>   <!-- 44 -->
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03699.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>     
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03758.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03825.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03835-2.jpg" alt="Miguel y Sofía">
-                            </div>   
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03787.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03892.jpg" alt="Miguel y Sofía">
-                            </div>  
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03855.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03864.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03835.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03965.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03949.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03954.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03925.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03921.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04033.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC03991.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04000.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC03985.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03969.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04127.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04107.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04112.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04124.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04100.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04073.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04114.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04165.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04145.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04180.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04137.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04178.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04135.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04168.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04173.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04159.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -1602,7 +1277,7 @@
                 </div>
             </div>
             <div class="carousel-instructions">
-                <p style="text-align: center; margin-top: 20px; font-style: italic; color: var(--primary);">
+                <p>
                     <i class="fas fa-info-circle"></i> El carrusel cambia automáticamente cada 2 segundos. 
                     Haz clic en el botón <i class="fas fa-pause"></i> para pausar una imagen que te guste.
                 </p>
@@ -1688,7 +1363,7 @@
                             </div>
                             <h3 class="gift-title">Amazon</h3>
                             <p class="gift-description">Regalos para nuestro nuevo hogar seleccionados en nuestra lista de bodas</p>
-                            <a href="#" class="https://www.amazon.com.mx/wedding/registry/1AYIGQBED3IVP">Ver Lista</a>
+                            <a href="https://www.amazon.com.mx/wedding/registry/1AYIGQBED3IVP" class="gift-link">Ver Lista</a>
                         </div>
                         
                         <div class="gift-option">
@@ -1697,7 +1372,7 @@
                             </div>
                             <h3 class="gift-title">Liverpool</h3>
                             <p class="gift-description">Regalos tradicionales para nuestra nueva vida juntos</p>
-                            <a href="#" class="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51712533">Ver Lista</a>
+                            <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51712533" class="gift-link">Ver Lista</a>
                         </div>
                         
                         <div class="gift-option">
@@ -1706,7 +1381,7 @@
                             </div>
                             <h3 class="gift-title">Fondo para Luna de Miel</h3>
                             <p class="gift-description">Contribución para nuestro viaje de ensueño a Italia</p>
-                            <a href="#" target="blank" class="gift-link">Contribuir</a>
+                            <a href="#" class="gift-link">Contribuir</a>
                         </div>
                     </div>
                     
@@ -1809,7 +1484,7 @@
         const swiper = new Swiper('.gallerySwiper', {
             loop: true,
             autoplay: {
-                delay: 2000, // Cambia cada 2 segundos
+                delay: 2000,
                 disableOnInteraction: false,
             },
             pagination: {
@@ -1977,7 +1652,7 @@
         // Animate sections on scroll
         document.querySelectorAll('.gallery-section, .countdown-section, .details-section, .gift-section, .rsvp-section').forEach(section => {
             section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
+            section.style.transform = 'translateY(20px)';
             section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(section);
         });

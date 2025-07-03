@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         :root {
-            --gold: #D4AF37; /* Dorado principal */
-            --lilac: #9a7b9a; /* Lila principal actualizado */
-            --light-lilac: #f0e6f0; /* Lila claro actualizado */
-            --white: #ffffff; /* Blanco */
-            --dark: #4a4a4a; /* Gris oscuro */
-            --gold-transparent: rgba(212, 175, 55, 0.5); /* Dorado transparente */
-            --lilac-transparent: rgba(154, 123, 154, 0.3); /* Lila transparente actualizado */
-            --rsvp-bg: #f5f0f5; /* Nuevo color de fondo para RSVP */
+            --gold: #D4AF37;
+            --lilac: #9a7b9a;
+            --light-lilac: #f0e6f0;
+            --white: #ffffff;
+            --dark: #4a4a4a;
+            --gold-transparent: rgba(212, 175, 55, 0.5);
+            --lilac-transparent: rgba(154, 123, 154, 0.3);
+            --rsvp-bg: #f5f0f5;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
         
@@ -36,7 +36,7 @@
             background-color: var(--white);
         }
         
-        /* Image Background - Solución para móviles */
+        /* SOLUCIÓN PRINCIPAL: Cambio a background-size: contain */
         .image-background {
             position: fixed;
             top: 0;
@@ -46,9 +46,10 @@
             z-index: -2;
             overflow: hidden;
             background-image: url('sofm.jpg');
-            background-size: cover;
-            background-position: center 10%; /* Posición mejorada */
+            background-size: contain; /* Cambiado de 'cover' a 'contain' */
+            background-position: center center; /* Mejor centrado */
             background-repeat: no-repeat;
+            background-color: var(--lilac); /* Color de fondo para espacios vacíos */
             filter: brightness(0.8);
         }
         
@@ -60,6 +61,7 @@
             height: 100%;
             background: linear-gradient(45deg, var(--lilac-transparent), rgba(106, 91, 140, 0.5));
             z-index: -1;
+            opacity: 0.7; /* Mayor opacidad para mejor contraste */
         }
         
         .container {
@@ -152,7 +154,7 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
-        /* Hero Section - Solución para móviles */
+        /* Hero Section - Optimizado para móviles */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -656,11 +658,11 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        /* RSVP Section - Cambios solicitados: Menos dorado */
+        /* RSVP Section */
         .rsvp-section {
             padding: 70px 0;
-            background-color: var(--rsvp-bg); /* Nuevo color de fondo */
-            color: var(--dark); /* Texto oscuro */
+            background-color: var(--rsvp-bg);
+            color: var(--dark);
             text-align: center;
         }
         
@@ -673,7 +675,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.2rem;
             margin-bottom: 25px;
-            color: var(--lilac); /* Color lila en lugar de blanco */
+            color: var(--lilac);
         }
         
         .rsvp-text {
@@ -684,17 +686,17 @@
             margin-left: auto;
             margin-right: auto;
             padding: 0 15px;
-            color: var(--dark); /* Texto oscuro */
+            color: var(--dark);
         }
         
         .rsvp-box {
-            background: rgba(255, 255, 255, 0.8); /* Fondo más claro */
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 12px;
             padding: 30px;
             max-width: 600px;
             margin: 0 auto;
-            border: 1px solid rgba(154, 123, 154, 0.2); /* Borde lila suave */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Sombra más suave */
+            border: 1px solid rgba(154, 123, 154, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .whatsapp-button {
@@ -708,7 +710,7 @@
             font-weight: 600;
             margin: 20px 0;
             transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra más suave */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .whatsapp-button:hover {
@@ -724,17 +726,17 @@
         .rsvp-instruction {
             font-size: 1rem;
             margin-bottom: 25px;
-            background: rgba(154, 123, 154, 0.1); /* Fondo más suave */
+            background: rgba(154, 123, 154, 0.1);
             padding: 15px;
             border-radius: 8px;
-            border-left: 3px solid var(--lilac); /* Borde lila */
-            color: var(--dark); /* Texto oscuro */
+            border-left: 3px solid var(--lilac);
+            color: var(--dark);
         }
         
         .confirmation-date {
             font-size: 1.2rem;
             margin-top: 30px;
-            color: var(--lilac); /* Color lila */
+            color: var(--lilac);
             font-weight: 500;
         }
         
@@ -743,7 +745,7 @@
             margin-top: 15px;
             opacity: 0.8;
             font-size: 0.9rem;
-            color: var(--dark); /* Texto oscuro */
+            color: var(--dark);
         }
         
         /* WhatsApp Options */
@@ -768,25 +770,25 @@
         .whatsapp-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
-            color: var(--lilac); /* Color lila */
+            color: var(--lilac);
             margin-bottom: 20px;
             text-align: center;
             width: 100%;
         }
         
         .whatsapp-option {
-            background: rgba(255, 255, 255, 0.8); /* Fondo más claro */
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
             width: 100%;
             transition: var(--transition);
-            border: 1px solid rgba(154, 123, 154, 0.2); /* Borde lila suave */
+            border: 1px solid rgba(154, 123, 154, 0.2);
         }
         
         .whatsapp-option:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 1); /* Fondo sólido al pasar el ratón */
+            background: rgba(255, 255, 255, 1);
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
@@ -796,7 +798,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin: 0 auto 15px;
-            border: 3px solid var(--lilac); /* Borde lila */
+            border: 3px solid var(--lilac);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
@@ -804,29 +806,29 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             margin-bottom: 12px;
-            color: var(--dark); /* Texto oscuro */
+            color: var(--dark);
         }
         
         .whatsapp-number {
             font-size: 1rem;
             margin-bottom: 15px;
-            color: var(--lilac); /* Color lila */
+            color: var(--lilac);
         }
         
         /* Confirmation Timer */
         .confirmation-timer {
-            background: rgba(154, 123, 154, 0.1); /* Fondo más suave */
+            background: rgba(154, 123, 154, 0.1);
             border-radius: 12px;
             padding: 25px;
             margin-top: 50px;
-            border-left: 3px solid var(--lilac); /* Borde lila */
+            border-left: 3px solid var(--lilac);
         }
         
         .timer-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
             margin-bottom: 20px;
-            color: var(--lilac); /* Color lila */
+            color: var(--lilac);
         }
         
         .timer-container {
@@ -839,7 +841,7 @@
         }
         
         .timer-item {
-            background: rgba(255, 255, 255, 0.8); /* Fondo más claro */
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 8px;
             width: 80px;
             height: 80px;
@@ -850,7 +852,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(154, 123, 154, 0.2); /* Borde lila suave */
+            border: 1px solid rgba(154, 123, 154, 0.2);
         }
         
         .timer-item::before {
@@ -860,13 +862,13 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background-color: var(--lilac); /* Color lila */
+            background-color: var(--lilac);
         }
         
         .timer-number {
             font-size: 2rem;
             font-weight: 300;
-            color: var(--dark); /* Texto oscuro */
+            color: var(--dark);
             font-family: 'Playfair Display', serif;
             line-height: 1;
             margin-bottom: 5px;
@@ -876,13 +878,13 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--lilac); /* Color lila */
+            color: var(--lilac);
             font-weight: 500;
         }
         
         /* Footer */
         .footer {
-            background-color: var(--lilac); /* Color lila */
+            background-color: var(--lilac);
             color: rgba(255, 255, 255, 0.85);
             padding: 50px 0 25px;
             text-align: center;
@@ -945,14 +947,16 @@
             60% {transform: translateY(-8px) translateX(-50%);}
         }
         
-        /* Responsive Design - Solución para móviles */
+        /* Responsive Design - Optimizado para móviles */
         @media (max-width: 768px) {
             .image-background {
-                background-position: center 25%; /* Posición mejorada para móviles */
+                background-size: contain; /* Mantenemos contain para móviles */
+                background-position: center center; /* Centrado completo */
+                background-color: var(--lilac); /* Color de fondo */
             }
             
             .hero {
-                min-height: 550px;
+                min-height: 500px; /* Altura optimizada para móviles */
             }
             
             .save-the-date {
@@ -1116,7 +1120,7 @@
         </div>
     </div>
     
-    <!-- Image Background -->
+    <!-- Image Background con solución aplicada -->
     <div class="image-background"></div>
     <div class="overlay"></div>
     
@@ -1144,7 +1148,7 @@
         </div>
     </header>
     
-    <!-- Hero Section - Solución para móviles -->
+    <!-- Hero Section con solución aplicada -->
     <section class="hero">
         <h1 class="save-the-date">NUESTRA BODA</h1>
         
@@ -1162,7 +1166,7 @@
         </div>
     </section>
     
-    <!-- Photo Gallery - Carrusel adaptado con todas tus imágenes -->
+    <!-- Photo Gallery -->
     <section class="gallery-section">
         <div class="container">
             <h2 class="section-title">Nuestros Momentos</h2>
@@ -1681,7 +1685,7 @@
         </div>
     </section>
     
-    <!-- RSVP Section - Cambios solicitados: Menos dorado -->
+    <!-- RSVP Section -->
     <section class="rsvp-section">
         <div class="container">
             <div class="rsvp-container">

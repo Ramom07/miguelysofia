@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         :root {
-            --gold: #D4AF37;
+              --gold: #D4AF37;
             --lilac: #9a7b9a;
             --light-lilac: #f0e6f0;
             --white: #ffffff;
@@ -46,10 +46,10 @@
             z-index: -2;
             overflow: hidden;
             background-image: url('sofm.jpg');
-            background-size: contain; /* Cambiado de 'cover' a 'contain' */
-            background-position: center center; /* Mejor centrado */
+            background-size: contain;
+            background-position: center center;
             background-repeat: no-repeat;
-            background-color: var(--lilac); /* Color de fondo para espacios vacíos */
+            background-color: var(--lilac);
             filter: brightness(0.8);
         }
         
@@ -61,7 +61,7 @@
             height: 100%;
             background: linear-gradient(45deg, var(--lilac-transparent), rgba(106, 91, 140, 0.5));
             z-index: -1;
-            opacity: 0.7; /* Mayor opacidad para mejor contraste */
+            opacity: 0.7;
         }
         
         .container {
@@ -565,10 +565,144 @@
             font-weight: 600;
         }
         
+        /* Dress Code Section - Nueva sección */
+        .dresscode-section {
+            padding: 70px 0;
+            background-color: var(--light-lilac);
+            position: relative;
+        }
+        
+        .dresscode-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .dresscode-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+        }
+        
+        .dresscode-content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(106, 91, 140, 0.08);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .dresscode-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+        
+        .dresscode-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--lilac);
+            margin-bottom: 25px;
+        }
+        
+        .dresscode-rules {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .dresscode-rule {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(106, 91, 140, 0.1);
+            transition: var(--transition);
+            position: relative;
+            border-top: 4px solid var(--gold);
+        }
+        
+        .dresscode-rule:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(106, 91, 140, 0.15);
+        }
+        
+        .rule-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .rule-title i {
+            font-size: 1.8rem;
+        }
+        
+        .rule-list {
+            text-align: left;
+            padding-left: 20px;
+        }
+        
+        .rule-list li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.6;
+        }
+        
+        .rule-list li:before {
+            content: "•";
+            color: var(--lilac);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        
+        .avoid-list {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(154, 123, 154, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--lilac);
+        }
+        
+        .avoid-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--lilac);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .avoid-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .avoid-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
         /* Gift Registry Section */
         .gift-section {
             padding: 70px 0;
-            background-color: var(--light-lilac);
+            background-color: var(--white);
             position: relative;
         }
         
@@ -950,13 +1084,13 @@
         /* Responsive Design - Optimizado para móviles */
         @media (max-width: 768px) {
             .image-background {
-                background-size: contain; /* Mantenemos contain para móviles */
-                background-position: center center; /* Centrado completo */
-                background-color: var(--lilac); /* Color de fondo */
+                background-size: contain;
+                background-position: center center;
+                background-color: var(--lilac);
             }
             
             .hero {
-                min-height: 500px; /* Altura optimizada para móviles */
+                min-height: 500px;
             }
             
             .save-the-date {
@@ -1005,6 +1139,15 @@
                 min-width: 100%;
                 padding: 25px;
                 margin: 10px 0;
+            }
+            
+            .dresscode-rules {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .dresscode-rule {
+                min-width: 100%;
             }
             
             .gift-options {
@@ -1081,6 +1224,18 @@
             
             .countdown-label {
                 font-size: 0.85rem;
+            }
+            
+            .dresscode-content {
+                padding: 25px 15px;
+            }
+            
+            .dresscode-heading {
+                font-size: 1.5rem;
+            }
+            
+            .rule-title {
+                font-size: 1.3rem;
             }
             
             .audio-controls {

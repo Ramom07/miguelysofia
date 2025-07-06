@@ -565,137 +565,6 @@
             font-weight: 600;
         }
 
-         /* Nueva sección: Transferencia Bancaria */
-        .bank-transfer-section {
-            padding: 70px 0;
-            background-color: var(--light-lilac);
-            position: relative;
-        }
-        
-        .bank-transfer-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .bank-transfer-box {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 10px 25px rgba(106, 91, 140, 0.08);
-            position: relative;
-        }
-        
-        .bank-icon {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-        
-        .bank-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--lilac);
-            margin-bottom: 30px;
-        }
-        
-        .bank-details {
-            text-align: left;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-left: 4px solid var(--gold);
-        }
-        
-        .account-info {
-            margin-bottom: 15px;
-            padding: 15px;
-            background: rgba(154, 123, 154, 0.1);
-            border-radius: 8px;
-            position: relative;
-        }
-        
-        .account-info:last-child {
-            margin-bottom: 0;
-        }
-        
-        .account-label {
-            font-weight: 600;
-            color: var(--lilac);
-            margin-bottom: 8px;
-            display: block;
-        }
-        
-        .account-number {
-            font-family: monospace;
-            font-size: 1.2rem;
-            color: var(--dark);
-            padding: 10px 15px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 5px;
-        }
-        
-        .copy-btn {
-            background-color: var(--gold);
-            color: var(--white);
-            border: none;
-            border-radius: 5px;
-            padding: 8px 15px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .copy-btn:hover {
-            background-color: #b08c2d;
-            transform: translateY(-2px);
-        }
-        
-        .copy-btn i {
-            font-size: 0.9rem;
-        }
-        
-        .account-name {
-            background: rgba(154, 123, 154, 0.15);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-weight: 500;
-        }
-        
-        .confirmation-message {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--gold);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 5px;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .confirmation-message.show {
-            opacity: 1;
-            animation: fadeOut 1s ease 1.5s forwards;
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        
         /* Dress Code Section - Nueva sección */
         .dresscode-section {
             padding: 70px 0;
@@ -878,6 +747,7 @@
             padding: 20px;
             box-shadow: 0 8px 20px rgba(106, 91, 140, 0.1);
             transition: var(--transition);
+            position: relative;
         }
         
         .gift-option:hover {
@@ -915,12 +785,135 @@
             font-size: 0.95rem;
             font-weight: 500;
             transition: var(--transition);
+            cursor: pointer;
+            border: none;
         }
         
         .gift-link:hover {
             background-color: #b08c2d;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Estilos para la sección de transferencia dentro de los regalos */
+        .bank-details-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(154, 123, 154, 0.1);
+        }
+        
+        .bank-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .bank-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--lilac);
+            margin-bottom: 20px;
+        }
+        
+        .bank-details {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .account-info {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(154, 123, 154, 0.1);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .account-info:last-child {
+            margin-bottom: 0;
+        }
+        
+        .account-label {
+            font-weight: 600;
+            color: var(--lilac);
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .account-number {
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: var(--dark);
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+        }
+        
+        .copy-btn {
+            background-color: var(--gold);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .copy-btn:hover {
+            background-color: #b08c2d;
+            transform: translateY(-2px);
+        }
+        
+        .copy-btn i {
+            font-size: 0.9rem;
+        }
+        
+        .account-name {
+            background: rgba(154, 123, 154, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        
+        .confirmation-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .confirmation-message.show {
+            opacity: 1;
+            animation: fadeOut 1s ease 1.5s forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
         
         /* RSVP Section */
@@ -1901,9 +1894,9 @@
                         <i class="fas fa-church"></i>
                     </div>
                     <h3 class="detail-title">Ceremonia</h3>
-                    <p class="detail-content"><span class="highlight">4:00 PM</span></p>
-                    <p class="detail-content">Capilla de Santa María</p>
-                    <p class="detail-content">Av. Paseo de la Reforma 123, Ciudad de México</p>
+                    <p class="detail-content"><span class="highlight">4:30 PM</span></p>
+                    <p class="detail-content">Jardin la Caberna</p>
+                    <p class="detail-content"></p>
                 </div>
                 
                 
@@ -1975,55 +1968,6 @@
             </div>
         </div>
     </section>
-
- <!-- Nueva sección: Transferencia Bancaria -->
-    <section class="bank-transfer-section">
-        <div class="container">
-            <h2 class="section-title">Transferencia Bancaria</h2>
-            <div class="bank-transfer-container">
-                <div class="bank-transfer-box">
-                    <div class="bank-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3 class="bank-title">Detalles para Transferencia</h3>
-                    <p>Para contribuir con nuestro fondo de luna de miel, puedes realizar una transferencia a nuestra cuenta bancaria.</p>
-                    
-                    <div class="bank-details">
-                        <div class="account-info">
-                            <span class="account-label">Cuenta CLABE:</span>
-                            <div class="account-number">
-                                <span>012180028865140228</span>
-                                <button class="copy-btn" data-clipboard="012180028865140228">
-                                    <i class="fas fa-copy"></i> Copiar
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="account-info">
-                            <span class="account-label">Cuenta BBVA:</span>
-                            <div class="account-number">
-                                <span>2886514022</span>
-                                <button class="copy-btn" data-clipboard="2886514022">
-                                    <i class="fas fa-copy"></i> Copiar
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="account-name">
-                            <i class="fas fa-user"></i> A nombre de: Miguel Lee Rodriguez
-                        </div>
-                    </div>
-                    
-                    <div class="note">
-                        <i class="fas fa-info-circle"></i> Por favor incluye tu nombre completo como referencia en la transferencia para que podamos identificar tu generoso regalo.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    
     
     <!-- Gift Registry Section -->
     <section class="gift-section">
@@ -2058,7 +2002,46 @@
                             </div>
                             <h3 class="gift-title">Fondo para Luna de Miel</h3>
                             <p class="gift-description">Contribución para nuestro viaje de ensueño a Italia</p>
-                            <a href="#" class="gift-link">Contribuir</a>
+                            <button class="gift-link" id="show-bank-details">Contribuir</button>
+                            
+                            <!-- Sección de transferencia bancaria integrada -->
+                            <div class="bank-details-container" id="bank-details-container">
+                                <div class="bank-icon">
+                                    <i class="fas fa-university"></i>
+                                </div>
+                                <h3 class="bank-title">Detalles para Transferencia</h3>
+                                <p>Para contribuir con nuestro fondo de luna de miel, puedes realizar una transferencia a nuestra cuenta bancaria.</p>
+                                
+                                <div class="bank-details">
+                                    <div class="account-info">
+                                        <span class="account-label">Cuenta CLABE:</span>
+                                        <div class="account-number">
+                                            <span>012180028865140228</span>
+                                            <button class="copy-btn" data-clipboard="012180028865140228">
+                                                <i class="fas fa-copy"></i> Copiar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="account-info">
+                                        <span class="account-label">Cuenta BBVA:</span>
+                                        <div class="account-number">
+                                            <span>2886514022</span>
+                                            <button class="copy-btn" data-clipboard="2886514022">
+                                                <i class="fas fa-copy"></i> Copiar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="account-name">
+                                        <i class="fas fa-user"></i> A nombre de: Miguel Lee Rodriguez
+                                    </div>
+                                </div>
+                                
+                                <div class="note">
+                                    <i class="fas fa-info-circle"></i> Por favor incluye tu nombre completo como referencia en la transferencia para que podamos identificar tu generoso regalo.
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -2154,6 +2137,9 @@
             <p class="copyright">© 2025 - Boda de Miguel Lee y Sofía Contreras</p>
         </div>
     </footer>
+    
+    <!-- Mensaje de confirmación para copiar -->
+    <div class="confirmation-message"></div>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
@@ -2339,6 +2325,32 @@
             window.scrollTo({
                 top: document.querySelector('.gallery-section').offsetTop,
                 behavior: 'smooth'
+            });
+        });
+        
+        // Mostrar/ocultar detalles de transferencia
+        document.getElementById('show-bank-details').addEventListener('click', function() {
+            const container = document.getElementById('bank-details-container');
+            if (container.style.display === 'none' || container.style.display === '') {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        });
+        
+        // Copy functionality
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const text = this.getAttribute('data-clipboard');
+                navigator.clipboard.writeText(text).then(() => {
+                    // Show confirmation message
+                    const message = document.querySelector('.confirmation-message');
+                    message.textContent = '¡Copiado al portapapeles!';
+                    message.classList.add('show');
+                    setTimeout(() => {
+                        message.classList.remove('show');
+                    }, 2000);
+                });
             });
         });
     </script>

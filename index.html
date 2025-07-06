@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sofia  & Miguel  - Nuestra Boda</title>
+    <title>Sofia & Miguel - Nuestra Boda</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         :root {
-              --gold: #D4AF37;
+            --gold: #D4AF37;
             --lilac: #9a7b9a;
             --light-lilac: #f0e6f0;
             --white: #ffffff;
@@ -36,7 +36,6 @@
             background-color: var(--white);
         }
         
-        /* SOLUCIÓN PRINCIPAL: Cambio a background-size: contain */
         .image-background {
             position: fixed;
             top: 0;
@@ -45,12 +44,11 @@
             height: 100%;
             z-index: -2;
             overflow: hidden;
-            background-image: url('sofm.jpg');
-            background-size: contain;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-color: var(--lilac);
-            filter: brightness(0.8);
+            background: linear-gradient(rgba(154, 123, 154, 0.7), rgba(154, 123, 154, 0.7)), 
+                        url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.9);
         }
         
         .overlay {
@@ -154,7 +152,7 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
-        /* Hero Section - Optimizado para móviles */
+        /* Hero Section */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -219,7 +217,7 @@
         }
         
         .date-highlight {
-            color: var(--lilac);
+            color: var(--gold);
             font-weight: 600;
         }
         
@@ -565,7 +563,7 @@
             font-weight: 600;
         }
 
-        /* Dress Code Section - Nueva sección */
+        /* Dress Code Section */
         .dresscode-section {
             padding: 70px 0;
             background-color: var(--light-lilac);
@@ -795,33 +793,54 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        /* Estilos para la sección de transferencia dentro de los regalos */
+        /* Estilos mejorados para la sección de transferencias */
         .bank-details-container {
             display: none;
             margin-top: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 1px solid rgba(154, 123, 154, 0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid rgba(154, 123, 154, 0.15);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .bank-icon {
             font-size: 2.5rem;
             color: var(--gold);
             margin-bottom: 15px;
+            text-align: center;
         }
         
         .bank-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--lilac);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .bank-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--gold);
         }
         
         .bank-details {
             text-align: left;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
@@ -829,11 +848,12 @@
         }
         
         .account-info {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             padding: 15px;
-            background: rgba(154, 123, 154, 0.1);
+            background: rgba(154, 123, 154, 0.05);
             border-radius: 8px;
             position: relative;
+            border: 1px solid rgba(154, 123, 154, 0.1);
         }
         
         .account-info:last-child {
@@ -843,21 +863,23 @@
         .account-label {
             font-weight: 600;
             color: var(--lilac);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: block;
+            font-size: 1.1rem;
         }
         
         .account-number {
             font-family: monospace;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--dark);
-            padding: 10px 15px;
-            background: rgba(255, 255, 255, 0.8);
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 6px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 5px;
+            border: 1px solid rgba(154, 123, 154, 0.2);
         }
         
         .copy-btn {
@@ -872,11 +894,13 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            font-weight: 500;
         }
         
         .copy-btn:hover {
             background-color: #b08c2d;
             transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
         }
         
         .copy-btn i {
@@ -884,11 +908,22 @@
         }
         
         .account-name {
-            background: rgba(154, 123, 154, 0.15);
+            background: rgba(154, 123, 154, 0.1);
             padding: 15px;
             border-radius: 8px;
             margin-top: 20px;
             font-weight: 500;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .note {
+            font-style: italic;
+            margin-top: 15px;
+            opacity: 0.8;
+            font-size: 0.95rem;
+            color: var(--dark);
+            text-align: center;
         }
         
         .confirmation-message {
@@ -1207,12 +1242,6 @@
         
         /* Responsive Design - Optimizado para móviles */
         @media (max-width: 768px) {
-            .image-background {
-                background-size: contain;
-                background-position: center center;
-                background-color: var(--lilac);
-            }
-            
             .hero {
                 min-height: 500px;
             }
@@ -1405,7 +1434,7 @@
     
     <!-- Audio -->
     <audio id="wedding-song" controls style="display: none;">
-        <source src="musica/musicasofi.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
         Tu navegador no soporta audio HTML5
     </audio>
     
@@ -1449,385 +1478,29 @@
     <!-- Photo Gallery -->
     <section class="gallery-section">
         <div class="container">
-            <h2 class="section-title"></h2>
+            <h2 class="section-title">Nuestros Momentos</h2>
             <div class="swiper-container">
                 <div class="swiper gallerySwiper">
                     <div class="swiper-wrapper">
-                        <!-- Todas las imágenes manteniendo el orden original -->
+                        <!-- Imágenes de ejemplo -->
                         <div class="swiper-slide">
                             <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03416.jpg" alt="Miguel y Sofía">
+                                <img src="https://images.unsplash.com/photo-1532710093739-9470acff878f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Miguel y Sofía">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03350.jpg" alt="Miguel y Sofía">
+                                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Miguel y Sofía">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03282.jpg" alt="Miguel y Sofía">
+                                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Miguel y Sofía">
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03347.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03386.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03405.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03388.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03406.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03370.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03470.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03423.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03455.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03473.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03490.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03486.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03495.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03500-2.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03500.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03506-2.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03504.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03513.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03518.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03519.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03536.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03530.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03558.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03550.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03568.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03615.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03601.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03675.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03671.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03581.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03597.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03644.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03623.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03702.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03675.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="imagenes/DSC03689.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03735.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03750.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03781.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03699.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03758.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03825.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03835-2.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03787.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03892.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03855.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03864.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03835.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03965.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03949.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03954.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03925.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03921.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04033.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC03991.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04000.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC03985.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img3/DSC03969.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04107.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04112.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04100.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04073.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04114.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04165.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04145.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04180.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04137.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04178.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04135.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04168.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04173.jpg" alt="Miguel y Sofía">
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="swiper-slide-content">
-                                <img src="img/DSC04159.jpg" alt="Miguel y Sofía">
+                                <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Miguel y Sofía">
                             </div>
                         </div>
                     </div>
@@ -1887,7 +1560,6 @@
                     <p class="detail-content">Hacienda de los Sueños</p>
                     <p class="detail-content">Bosque de Chapultepec, Ciudad de México</p>
                 </div>
-
                 
                 <div class="detail-card">
                     <div class="detail-icon">
@@ -1895,10 +1567,9 @@
                     </div>
                     <h3 class="detail-title">Ceremonia</h3>
                     <p class="detail-content"><span class="highlight">4:30 PM</span></p>
-                    <p class="detail-content">Jardin la Caberna</p>
-                    <p class="detail-content"></p>
+                    <p class="detail-content">Jardín la Caverna</p>
+                    <p class="detail-content">Ciudad de México</p>
                 </div>
-                
                 
                 <div class="detail-card">
                     <div class="detail-icon">
@@ -1912,7 +1583,8 @@
             </div>
         </div>
     </section>
-    <!-- Nueva sección: Dress Code -->
+    
+    <!-- Dress Code Section -->
     <section class="dresscode-section">
         <div class="container">
             <h2 class="section-title">Código de Vestimenta</h2>
@@ -1984,7 +1656,7 @@
                             </div>
                             <h3 class="gift-title">Amazon</h3>
                             <p class="gift-description">Regalos para nuestro nuevo hogar seleccionados en nuestra lista de bodas</p>
-                            <a href="https://www.amazon.com.mx/wedding/registry/1AYIGQBED3IVP" class="gift-link" target="_blank">Ver Lista</a>
+                            <a href="#" class="gift-link">Ver Lista</a>
                         </div>
                         
                         <div class="gift-option">
@@ -1993,7 +1665,7 @@
                             </div>
                             <h3 class="gift-title">Liverpool</h3>
                             <p class="gift-description">Regalos tradicionales para nuestra nueva vida juntos</p>
-                            <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51712533" class="gift-link" target="_blank">Ver Lista</a>
+                            <a href="#" class="gift-link">Ver Lista</a>
                         </div>
                         
                         <div class="gift-option">

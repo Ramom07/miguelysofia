@@ -1474,6 +1474,65 @@
             .account-number {
                 font-size: 1.1rem;
             }
+
+            /* Nuevos estilos para los créditos */
+        .credits-section {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 25px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .credits-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .credits-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--lilac);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .credits-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .visual-rise-logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .credits-text {
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+        
+        .credits-text a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .credits-text a:hover {
+            text-decoration: underline;
+        }
+            
         }
     </style>
 </head>
@@ -2224,6 +2283,21 @@
             <p class="copyright">© 2025 - Boda de Miguel Lee y Sofía Contreras</p>
         </div>
     </footer>
+    <!-- Sección de créditos de Visual Rise -->
+    <section class="credits-section">
+        <div class="credits-container">
+            <h3 class="credits-title">Diseñado con amor por</h3>
+            <div class="credits-content">
+                <div class="visual-rise-logo">VR</div>
+                <p class="credits-text">
+                    <strong>VISUAL RISE</strong><br>
+                    Sitios web para momentos especiales<br>
+                    Contacto: <a href="mailto:info@visualrise.com">info@visualrise.com</a><br>
+                    <a href="https://www.visualrise.com" target="_blank">www.visualrise.com</a>
+                </p>
+            </div>
+        </div>
+        </section>
     
     <!-- Mensaje de confirmación para copiar -->
     <div class="confirmation-message"></div>

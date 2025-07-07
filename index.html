@@ -700,6 +700,7 @@
         }
         
         /* Gift Registry Section */
+       /* Gift Section - Nueva estructura */
         .gift-section {
             padding: 70px 0;
             background-color: var(--white);
@@ -795,28 +796,36 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        /* MEJORA: Estilos mejorados para la sección de transferencias */
-        .bank-details-container {
-            display: none;
-            margin-top: 20px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(154, 123, 154, 0.15);
-            border: 2px solid rgba(212, 175, 55, 0.2);
+        
+        /* Sección de transferencia bancaria completamente separada */
+        .transfer-section {
+            padding: 40px 0;
+            background-color: var(--light-lilac);
+            border-radius: 12px;
+            margin-top: 30px;
+            display: none; /* Inicialmente oculto */
             animation: fadeIn 0.5s ease-out;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .transfer-section.visible {
+            display: block;
+        }
+        
+        .transfer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .transfer-header {
+            text-align: center;
+            margin-bottom: 30px;
         }
         
         .bank-icon {
             font-size: 3rem;
             color: var(--gold);
             margin-bottom: 20px;
-            text-align: center;
         }
         
         .bank-title {
@@ -824,7 +833,6 @@
             font-size: 1.8rem;
             color: var(--lilac);
             margin-bottom: 25px;
-            text-align: center;
             position: relative;
             padding-bottom: 15px;
         }
@@ -982,7 +990,6 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
-        
         /* RSVP Section */
         .rsvp-section {
             padding: 70px 0;
@@ -1980,6 +1987,9 @@
                     <p class="detail-content"><span class="highlight">4:30 PM</span></p>
                     <p class="detail-content">Jardin la Caberna</p>
                     <p class="detail-content"></p>
+                     <a href="https://goo.gl/maps/example" target="_blank" class="map-link">
+                        <i class="fas fa-map-marked-alt"></i> Ver ubicación en Google Maps
+                    </a>
                 </div>
                 
                 
@@ -2079,59 +2089,69 @@
                             <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51712533" class="gift-link" target="_blank">Ver Lista</a>
                         </div>
                         
-                        <div class="gift-option">
+                       <div class="gift-option">
                             <div class="gift-icon">
                                 <i class="fas fa-money-bill-wave"></i>
                             </div>
                             <h3 class="gift-title">Fondo para Luna de Miel</h3>
                             <p class="gift-description">Contribución para nuestro viaje de ensueño a Italia</p>
                             <button class="gift-link" id="show-bank-details">Contribuir</button>
-                            
-                            <!-- MEJORA: Sección de transferencia bancaria mejorada -->
-                            <div class="bank-details-container" id="bank-details-container">
-                                <div class="bank-icon">
-                                    <i class="fas fa-university"></i>
-                                </div>
-                                <h3 class="bank-title">Detalles para Transferencia</h3>
-                                <p class="bank-info">Para contribuir con nuestro fondo de luna de miel, puedes realizar una transferencia a nuestra cuenta bancaria.</p>
-                                
-                                <div class="account-container">
-                                    <div class="account-card">
-                                        <div class="account-type">
-                                            <i class="fas fa-wallet"></i> Cuenta CLABE
-                                        </div>
-                                        <div class="account-number">012180028865140228</div>
-                                        <div class="copy-btn-container">
-                                            <button class="copy-btn" data-clipboard="012180028865140228">
-                                                <i class="fas fa-copy"></i> Copiar CLABE
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="account-card">
-                                        <div class="account-type">
-                                            <i class="fas fa-credit-card"></i> Cuenta BBVA
-                                        </div>
-                                        <div class="account-number">2886514022</div>
-                                        <div class="copy-btn-container">
-                                            <button class="copy-btn" data-clipboard="2886514022">
-                                                <i class="fas fa-copy"></i> Copiar Cuenta
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="account-name">
-                                    <i class="fas fa-user"></i> A nombre de: Miguel Lee Rodríguez
-                                </div>
-                                
-                                <p class="note">
-                                    <i class="fas fa-info-circle"></i> Por favor incluye tu nombre completo como referencia en la transferencia para que podamos identificar tu generoso regalo.
-                                </p>
-                            </div>
                         </div>
                     </div>
                     
+                    <p class="note" style="margin-top: 30px;">
+                        * Agradecemos de corazón cualquier detalle. Su amor y apoyo son lo más importante para nosotros.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NUEVA SECCIÓN: Detalles de Transferencia Bancaria -->
+    <section class="transfer-section" id="transfer-section">
+        <div class="transfer-container">
+            <div class="transfer-header">
+                <div class="bank-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3 class="bank-title">Detalles para Transferencia</h3>
+                <p class="bank-info">Para contribuir con nuestro fondo de luna de miel, puedes realizar una transferencia a nuestra cuenta bancaria.</p>
+            </div>
+            
+            <div class="account-container">
+                <div class="account-card">
+                    <div class="account-type">
+                        <i class="fas fa-wallet"></i> Cuenta CLABE
+                    </div>
+                    <div class="account-number">012180028865140228</div>
+                    <div class="copy-btn-container">
+                        <button class="copy-btn" data-clipboard="012180028865140228">
+                            <i class="fas fa-copy"></i> Copiar CLABE
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="account-card">
+                    <div class="account-type">
+                        <i class="fas fa-credit-card"></i> Cuenta BBVA
+                    </div>
+                    <div class="account-number">2886514022</div>
+                    <div class="copy-btn-container">
+                        <button class="copy-btn" data-clipboard="2886514022">
+                            <i class="fas fa-copy"></i> Copiar Cuenta
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="account-name">
+                <i class="fas fa-user"></i> A nombre de: Miguel Lee Rodríguez
+            </div>
+            
+            <p class="note">
+                <i class="fas fa-info-circle"></i> Por favor incluye tu nombre completo como referencia en la transferencia para que podamos identificar tu generoso regalo.
+            </p>
+        </div>
                     <p class="note" style="margin-top: 30px;">
                         * Agradecemos de corazón cualquier detalle. Su amor y apoyo son lo más importante para nosotros.
                     </p>
@@ -2413,6 +2433,17 @@
                 top: document.querySelector('.gallery-section').offsetTop,
                 behavior: 'smooth'
             });
+        });
+
+        // Mostrar/ocultar detalles de transferencia (nueva sección)
+        document.getElementById('show-bank-details').addEventListener('click', function() {
+            const section = document.getElementById('transfer-section');
+            section.classList.toggle('visible');
+            
+            // Desplazar suavemente a la sección de transferencia
+            if (section.classList.contains('visible')) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
         
         // Mostrar/ocultar detalles de transferencia

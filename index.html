@@ -556,6 +556,82 @@
             font-weight: 600;
         }
 
+        /* Estilos para la nueva sección de Consejos */
+        .tips-section {
+            padding: 70px 0;
+            background-color: var(--light-lilac);
+            position: relative;
+        }
+
+        .tips-intro {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--gold);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 91, 140, 0.15);
+        }
+
+        .tip-icon {
+            font-size: 2.5rem;
+            color: var(--lilac);
+            margin-bottom: 15px;
+        }
+
+        .tip-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .tip-description {
+            font-size: 1rem;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .time-message {
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--lilac);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .time-message i {
+            font-size: 1.5rem;
+        }
+        
         .dresscode-section {
             padding: 70px 0;
             background-color: var(--light-lilac);
@@ -1362,6 +1438,15 @@
             .timer-number {
                 font-size: 1.8rem;
             }
+            
+            /* Consejos responsivos */
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-message {
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1457,82 +1542,6 @@
             .account-number {
                 font-size: 1.1rem;
             }
-
-            /* Estilos para la nueva sección de Consejos */
-.tips-section {
-    padding: 70px 0;
-    background-color: var(--light-lilac);
-    position: relative;
-}
-
-.tips-intro {
-    max-width: 700px;
-    margin: 0 auto 40px;
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--dark);
-}
-
-.tips-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.tip-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    padding: 25px;
-    text-align: center;
-    transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border-top: 3px solid var(--gold);
-}
-
-.tip-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(106, 91, 140, 0.15);
-}
-
-.tip-icon {
-    font-size: 2.5rem;
-    color: var(--lilac);
-    margin-bottom: 15px;
-}
-
-.tip-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--gold);
-    margin-bottom: 15px;
-}
-
-.tip-description {
-    font-size: 1rem;
-    color: var(--dark);
-    line-height: 1.6;
-}
-
-.time-message {
-    text-align: center;
-    margin-top: 40px;
-    padding: 15px;
-    background: rgba(212, 175, 55, 0.1);
-    border-radius: 10px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--lilac);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.time-message i {
-    font-size: 1.5rem;
-}
             
             /* CORRECCIÓN ESPECÍFICA PARA MINUTOS Y SEGUNDOS */
             .confirmation-timer .timer-label {
@@ -1551,6 +1560,25 @@
             .confirmation-timer .timer-item {
                 width: 65px;
                 height: 65px;
+            }
+            
+            /* Consejos móviles */
+            .tip-card {
+                padding: 20px;
+            }
+            
+            .tip-icon {
+                font-size: 2rem;
+            }
+            
+            .tip-title {
+                font-size: 1.3rem;
+            }
+            
+            .time-message {
+                font-size: 1rem;
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
@@ -2077,6 +2105,71 @@
         </div>
     </section>
     
+    <!-- Nueva sección de Consejos para Disfrutar al Máximo -->
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Consejos para Disfrutar al Máximo</h2>
+            <div class="tips-intro">
+                <p>¡Falta muy poco para nuestro gran día! Para que todos disfrutemos al máximo la celebración, les compartimos estos consejos:</p>
+            </div>
+            
+            <div class="tips-container">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="tip-title">Buenos deseos</h3>
+                    <p class="tip-description">Evita comentarios negativos sobre los novios o la celebración. Comparte solo buenos deseos y energía positiva.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-volume-mute"></i>
+                    </div>
+                    <h3 class="tip-title">Silencio electrónico</h3>
+                    <p class="tip-description">Mantén tu celular en silencio durante la ceremonia y banquetes. Disfruta el momento presente sin distracciones.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="tip-title">Fotos discretas</h3>
+                    <p class="tip-description">Toma fotos con discreción. Durante la ceremonia, evita levantarte o bloquear la vista de otros invitados.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3 class="tip-title">Brinda con moderación</h3>
+                    <p class="tip-description">Disfruta de las bebidas con responsabilidad para que todos tengamos un recuerdo maravilloso de la celebración.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="tip-title">Conoce a otros invitados</h3>
+                    <p class="tip-description">Aprovecha para conocer a otros invitados. ¡Muchos de ellos son personas importantes en nuestras vidas!</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="tip-title">¡Baila!</h3>
+                    <p class="tip-description">La pista de baile es para todos. ¡Suelta tus inhibiciones y disfruta la música con nosotros!</p>
+                </div>
+            </div>
+            
+            <div class="time-message">
+                <i class="fas fa-calendar-check"></i>
+                <span id="time-message-text">¡Falta muy poco para nuestro gran día!</span>
+            </div>
+        </div>
+    </section>
+    
     <!-- Dress Code Section -->
     <section class="dresscode-section">
         <div class="container">
@@ -2221,71 +2314,6 @@
             </p>
         </div>
     </section>
-
-    <!-- buenos consejos -->
-<section class="tips-section">
-    <div class="container">
-        <h2 class="section-title">Consejos para Disfrutar al Máximo</h2>
-        <div class="tips-intro">
-            <p>¡Falta muy poco para nuestro gran día! Para que todos disfrutemos al máximo la celebración, les compartimos estos consejos:</p>
-        </div>
-        
-        <div class="tips-container">
-            <div class="tip-card">
-                <div class="tip-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <h3 class="tip-title">Buenos deseos</h3>
-                <p class="tip-description">Evita comentarios negativos sobre los novios o la celebración. Comparte solo buenos deseos y energía positiva.</p>
-            </div>
-            
-            <div class="tip-card">
-                <div class="tip-icon">
-                    <i class="fas fa-volume-mute"></i>
-                </div>
-                <h3 class="tip-title">Silencio electrónico</h3>
-                <p class="tip-description">Mantén tu celular en silencio durante la ceremonia y banquetes. Disfruta el momento presente sin distracciones.</p>
-            </div>
-            
-            <div class="tip-card">
-                <div class="tip-icon">
-                    <i class="fas fa-camera"></i>
-                </div>
-                <h3 class="tip-title">Fotos discretas</h3>
-                <p class="tip-description">Toma fotos con discreción. Durante la ceremonia, evita levantarte o bloquear la vista de otros invitados.</p>
-            </div>
-            
-            <div class="tip-card">
-                <div class="tip-icon">
-                    <i class="fas fa-glass-cheers"></i>
-                </div>
-                <h3 class="tip-title">Brinda con moderación</h3>
-                <p class="tip-description">Disfruta de las bebidas con responsabilidad para que todos tengamos un recuerdo maravilloso de la celebración.</p>
-            </div>
-            
-            <div class="tip-card">
-                <div class="tip-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <h3 class="tip-title">Conoce a otros invitados</h3>
-                <p class="tip-description">Aprovecha para conocer a otros invitados. ¡Muchos de ellos son personas importantes en nuestras vidas!</p>
-            </div>
-            
-            <div class="tip-card">
-                <div class="tip-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <h3 class="tip-title">¡Baila!</h3>
-                <p class="tip-description">La pista de baile es para todos. ¡Suelta tus inhibiciones y disfruta la música con nosotros!</p>
-            </div>
-        </div>
-        
-        <div class="time-message">
-            <i class="fas fa-calendar-check"></i>
-            <span id="time-message-text">¡Falta muy poco para nuestro gran día!</span>
-        </div>
-    </div>
-</section>
     
     <!-- RSVP Section -->
     <section class="rsvp-section">
@@ -2596,6 +2624,28 @@
                 });
             });
         });
+        
+        // Actualizar mensaje de tiempo para la nueva sección de consejos
+        function updateTimeMessage() {
+            const weddingDate = new Date('July 26, 2025 16:30:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            
+            const messageElement = document.getElementById('time-message-text');
+            
+            if (days === 7) {
+                messageElement.textContent = "¡Falta exactamente 1 semana para nuestra boda!";
+            } else if (days > 0) {
+                messageElement.textContent = `¡Solo faltan ${days} días para nuestro gran día!`;
+            } else {
+                messageElement.textContent = "¡Hoy es nuestro gran día! ¡Gracias por celebrar con nosotros!";
+            }
+        }
+
+        // Llamar a la función al cargar y actualizar diariamente
+        updateTimeMessage();
+        setInterval(updateTimeMessage, 86400000); // Actualizar cada 24 horas
     </script>
 </body>
 </html>
